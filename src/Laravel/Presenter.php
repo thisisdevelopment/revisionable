@@ -4,6 +4,7 @@ namespace Sofa\Revisionable\Laravel;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 
 class Presenter
 {
@@ -90,7 +91,7 @@ class Presenter
     {
         $action = $this->revision->action;
 
-        return array_get($this->actions, $action, $action);
+        return Arr::get($this->actions, $action, $action);
     }
 
     /**
@@ -102,7 +103,7 @@ class Presenter
      */
     public function label($key)
     {
-        return array_get($this->labels, $key, $key);
+        return Arr::get($this->labels, $key, $key);
     }
 
     /**
@@ -117,7 +118,7 @@ class Presenter
     {
         return ($this->isPassedThrough($key))
             ? $this->passThrough($version, $key)
-            : array_get($this->{$version}, $key);
+            : Arr::get($this->{$version}, $key);
     }
 
     /**

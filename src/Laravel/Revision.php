@@ -3,6 +3,7 @@
 namespace Sofa\Revisionable\Laravel;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 
 class Revision extends Model
 {
@@ -142,7 +143,7 @@ class Revision extends Model
      */
     protected function getFromArray($version, $key)
     {
-        return array_get($this->{$version}, $key);
+        return Arr::get($this->{$version}, $key);
     }
 
     /**
